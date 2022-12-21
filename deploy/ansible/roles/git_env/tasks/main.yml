@@ -1,0 +1,15 @@
+---
+# tasks file for git_env
+
+- name: update prod server
+  command: apt update
+
+- name: install git cli
+  apt:
+    name: git
+    state: present
+
+- name: clone app
+  git:
+    repo: "https://{{token}}@github.com/{{user}}/{{repo}}.git"
+    dest: "{{codebase}}/{{repo}}"
