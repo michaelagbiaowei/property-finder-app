@@ -1,11 +1,11 @@
  - name: deploying property-finder-app to test server
-   hosts: deploy
+   hosts: nodetest
    become: true
    vars_files:
      - vars/main.yml
    roles:
      - git_env
-       #- apache2
+     - apache2
        #- php
        # - mysql
        #- composer
