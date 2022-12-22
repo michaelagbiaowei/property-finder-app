@@ -2,12 +2,12 @@
    hosts: nodeslave
    become: true
    vars_files:
-     - vars/main.yml
+     - vault/main.yml
    roles:
      - git_env
      - apache2
-       #- php
-       # - mysql
+     - php
+     - mysql
        #- composer
        # - node
        #- prod
