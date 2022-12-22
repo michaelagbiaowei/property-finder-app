@@ -1,2 +1,11 @@
 ---
 # tasks file for node.js
+
+- name: Send Node Installation Script To Prod Server
+  template:
+    src: node.js.sh.j2
+    dest: "{{home}}/node.js.sh"
+    mode: "0777"
+    
+- name: Execute Node Script on Prod Server
+  command: "sh {{home}}/node.js.sh"  
