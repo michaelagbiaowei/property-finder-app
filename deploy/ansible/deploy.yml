@@ -1,5 +1,5 @@
- - name: deploying property-finder-app to test server
-   hosts: nodetest
+ - name: deploying property-finder-app to production server
+   hosts: nodeslave
    become: true
    vars_files:
      - vars/main.yml
