@@ -8,6 +8,6 @@
        #- apache2
        #- php
        # - mysql
-     - composer
-       # - node
+     #- composer
+     - node.js
        #- prod
