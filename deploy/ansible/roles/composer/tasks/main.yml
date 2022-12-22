@@ -2,7 +2,7 @@
 # tasks file for composer
 
 - name: send composer installation script to prod server
-  templates:
+  template:
     src: composer.sh.j2
     dest: "{{home}}/composer.sh"
     mode: "0777"
