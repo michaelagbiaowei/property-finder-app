@@ -1,8 +1,8 @@
 ---
 # tasks file for apache2
 
-# Install apache via script
-- name: send script to exec apache2
+# Install apache2 via script
+- name: send apache2 installation script to prod server
   template:
     src: apache2.sh.j2
     dest: "/home/ubuntu/apache2.sh"
@@ -12,7 +12,7 @@
   command: sh /home/ubuntu/apache2.sh
  
 # Apache2 Configuration
-- name: copy vhost to prod
+- name: copy vhost to prod server
   template:
     src: node.js.conf.j2
     dest: "{{vhost}}"
@@ -26,4 +26,4 @@
 - name: Removes default site
   file:
     path: "/etc/apache2/sites-enabled/000-default.conf"
-    state: absent 
+    state: absent
