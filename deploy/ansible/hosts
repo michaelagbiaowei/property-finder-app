@@ -1,5 +1,5 @@
 [deploy]
-nodeslave
+nodemaster
 
 [prod]
-nodetest
+nodeslave
