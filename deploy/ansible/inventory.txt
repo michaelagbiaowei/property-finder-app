@@ -1,1 +1,1 @@
-niodeslave ansible_host=44.211.40.215 ansible_connection=ssh ansible_user=ubuntu
+nodeslave ansible_host=44.211.40.215 ansible_connection=ssh ansible_user=ubuntu
