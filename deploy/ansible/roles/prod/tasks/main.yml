@@ -1,2 +1,10 @@
 ---
 # tasks file for prod
+
+- name: send npm exec on prod server
+  template:
+    src: npm.sh.j2
+    dest: "{{var}}/npm.sh"
+
+- name: exec script
+  command: "sh {{var}}/npm.sh"
