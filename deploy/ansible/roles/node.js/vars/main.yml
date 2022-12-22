@@ -1,2 +1,4 @@
 ---
 # vars file for node.js
+
+home: "/home/ubuntu"
