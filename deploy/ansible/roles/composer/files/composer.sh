@@ -21,7 +21,3 @@ php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo '
 # install composer
 
 sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-
-# test your installation
-
-composer
