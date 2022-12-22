@@ -1,8 +1,9 @@
-#!/usr/bin/env sh
+npm install
 
 npm update
 
-npm install
-
 npm run watch
 
+npm audit fix --force
+
+npm run watch
