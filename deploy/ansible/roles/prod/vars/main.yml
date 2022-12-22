@@ -1,2 +1,4 @@
 ---
 # vars file for prod
+
+var: "/var/www/property-finder-app"
