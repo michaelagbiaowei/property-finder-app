@@ -1,8 +1,6 @@
 ---
 # tasks file for mysql
 
----
-# tasks file for mysql
 - name: Install mysql
   apt: name={{ item }} update_cache=yes state=latest
   loop: [ 'mysql-server', 'python3-pymysql' ]
