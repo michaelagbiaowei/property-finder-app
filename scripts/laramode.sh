@@ -2,13 +2,13 @@
 
 # SETTING EXECUTABLE PERMISSIONS FOR LARAVEL
 
-sudo chown -R :www-data /var/www/property-finder-app
+sudo chown -R :www-data /var/www/property-finder-app/code
 
-sudo chmod -R 775 /var/www/property-finder-app
+sudo chmod -R 775 /var/www/property-finder-app/code
 
-sudo chmod -R 775 /var/www/property-finder-app/storage
+sudo chmod -R 775 /var/www/property-finder-app/code/storage
 
-sudo chmod -R 775 /var/www/property-finder-app/bootstrap/cache
+sudo chmod -R 775 /var/www/property-finder-app/code/bootstrap/cache
 
 sudo a2enmod rewrite
 
