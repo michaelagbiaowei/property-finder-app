@@ -1,8 +1,8 @@
+sudo apt install npm -y
+
 npm install
 
 npm update
-
-npm run watch
 
 npm audit fix --force
 
