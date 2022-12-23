@@ -35,7 +35,7 @@
 #     chdir: "{{var}}/code"
 
 - name: npm run watch
-  command: "/usr/bin/npm run watch"
+  command: "sudo /usr/bin/npm run watch"
   args:
     chdir: "{{var}}/code"
     
