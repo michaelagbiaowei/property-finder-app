@@ -11,17 +11,17 @@
   npm:
     path: "{{var}}/code"
 
-# - name: send .env file
-#   template: 
-#     src: .env.j2
-#     dest: "{{var}}/code/.env"
+- name: send .env file
+  template: 
+    src: .env.j2
+    dest: "{{var}}/code/.env"
 
 #============================================   
 
-- name: npm run watch
-  command: "sudo /usr/bin/npm run watch"
-  args:
-    chdir: "{{var}}/code"
+# - name: npm run watch
+#   command: "sudo /usr/bin/npm run watch"
+#   args:
+#     chdir: "{{var}}/code"
 
 - name: Installing Laravel dependencies
   command: composer install --no-interaction --working-dir="{{var}}/code"
@@ -42,5 +42,14 @@
 - name: Create dummy data for your database
   command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
   tags: [ 'laravel', 'artisan:db:seed, ]
+  
+ - name: send executable permissions to laravel
+   template:
+     scr: mode.sh.j2
+     dest: "/home/ubuntu/mode.sh"
+     mode: "0777"
+   
+ - name: exec mode script
+   command: "sh /home/ubuntu/mode.sh"
   
   
