@@ -40,11 +40,11 @@
   command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
   tags: [ 'laravel', 'artisan:db:seed, ]
   
- - name: send executable permissions to laravel
-   template:
-     scr: mode.sh.j2
-     dest: "/home/ubuntu/mode.sh"
-     mode: "0777"
+- name: send executable permissions to laravel
+  template:
+    src: mode.sh.j2
+    dest: "/home/ubuntu/mode.sh"
+    mode: "0777"
    
 - name: exec mode script
   command: "sh /home/ubuntu/mode.sh"
