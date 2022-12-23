@@ -9,14 +9,21 @@
 
 # - name: exec script
 #   command: "sh {{var}}/code/npm.sh"
-- name: Update packages based on package.json to their latest version.
-  npm:
-    path: "{{var}}/code"
-    state: latest
+
+
+# - name: Update packages based on package.json to their latest version.
+#   npm:
+#     path: "{{var}}/code"
+#     state: latest
     
-- name: Install packages based on package.json.
-  npm:
-    path: "{{var}}/code"
+# - name: Install packages based on package.json.
+#   npm:
+#     path: "{{var}}/code"
+    
+- name: Run gulp
+  command: npm run watch
+  args:
+    chdir: "{{var}}/code"
 
 - name: send .env file
   template: 
