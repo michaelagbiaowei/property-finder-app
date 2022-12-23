@@ -1,24 +1,15 @@
 ---
 # tasks file for prod
 
-# - name: send npm exec on prod server
-#   template:
-#     src: npm.sh.j2
-#     dest: "{{var}}/code/npm.sh"
-#     mode: "0777"
-
-# - name: exec script
-#   command: "sh {{var}}/code/npm.sh"
-
 #==============================================================
-# - name: Update packages based on package.json to their latest version.
-#   npm:
-#     path: "{{var}}/code"
-#     state: latest
+- name: Update packages based on package.json to their latest version.
+  npm:
+    path: "{{var}}/code"
+    state: latest
     
-# - name: Install packages based on package.json.
-#   npm:
-#     path: "{{var}}/code"
+- name: Install packages based on package.json.
+  npm:
+    path: "{{var}}/code"
 
 # - name: send .env file
 #   template: 
@@ -26,39 +17,30 @@
 #     dest: "{{var}}/code/.env"
 
 #============================================   
-# - name: Run build-dev
-#   shell: |
-#   #  source $HOME/.nvm/nvm.sh
-#     npm run watch
-#   args:
-#     executable: /bin/bash
-#     chdir: "{{var}}/code"
 
 - name: npm run watch
   command: "sudo /usr/bin/npm run watch"
   args:
     chdir: "{{var}}/code"
-    
-# - name: npm run watch
-#   command: "/usr/bin/npm {{var}}/code/run watch"
-#   tags: [ 'laravel', 'artisan:migrate' ]
 
-# - name: Installing Laravel dependencies
-#   command: composer install --no-interaction --working-dir="{{var}}/code"
-#   become: false
+- name: Installing Laravel dependencies
+  command: composer install --no-interaction --working-dir="{{var}}/code"
+  become: false
 
-# - name: Generate app key
-#   command: "/usr/bin/php {{var}}/code/artisan key:generate"
-#   tags: [ 'laravel', 'artisan:key' ]
+- name: Generate app key
+  command: "/usr/bin/php {{var}}/code/artisan key:generate"
+  tags: [ 'laravel', 'artisan:key' ]
 
-# - name: Set up app storage link
-#   command: "/usr/bin/php {{var}}/code/artisan storage:link"
-#   tags: [ 'laravel', 'artisan:storage' ]
+- name: Set up app storage link
+  command: "/usr/bin/php {{var}}/code/artisan storage:link"
+  tags: [ 'laravel', 'artisan:storage' ]
 
-# - name: Run Migrations + Seeders
-#   command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan migrate --seed --force"
-#   tags: [ 'laravel', 'artisan:migrate' 
+- name: Run Migrations + Seeders
+  command: "/usr/bin/php {{var}}/code/artisan migrate --seed --force"
+  tags: [ 'laravel', 'artisan:migrate' ]
   
-  
+- name: Create dummy data for your database
+  command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
+  tags: [ 'laravel', 'artisan:db:seed, ]
   
   
