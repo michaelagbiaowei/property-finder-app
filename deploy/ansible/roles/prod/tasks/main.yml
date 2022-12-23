@@ -43,9 +43,8 @@
 - name: send executable permissions to laravel
   template:
     src: mode.sh.j2
-    dest: "/home/ubuntu/mode.sh"
+    dest: "{{home}}/mode.sh"
     mode: "0777"
-   
+    
 - name: exec mode script
-  command: "sh /home/ubuntu/mode.sh"
-  
+  command: "sh {{home}}/mode.sh"
