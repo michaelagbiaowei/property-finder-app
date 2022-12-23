@@ -10,7 +10,7 @@
 # - name: exec script
 #   command: "sh {{var}}/code/npm.sh"
 
-
+#==============================================================
 # - name: Update packages based on package.json to their latest version.
 #   npm:
 #     path: "{{var}}/code"
@@ -19,13 +19,20 @@
 # - name: Install packages based on package.json.
 #   npm:
 #     path: "{{var}}/code"
-    
-- name: Run gulp
-  command: npm run watch
-  args:
-    chdir: "{{var}}/code"
 
-- name: send .env file
-  template: 
-    src: .env.j2
-    dest: "{{var}}/code/.env"
+# - name: send .env file
+#   template: 
+#     src: .env.j2
+#     dest: "{{var}}/code/.env"
+
+#============================================   
+# - name: Run build-dev
+#   shell: |
+#   #  source $HOME/.nvm/nvm.sh
+#     npm run watch
+#   args:
+#     executable: /bin/bash
+#     chdir: "{{var}}/code"
+
+- name: npm run watch
+  command: "/usr/bin/npm {{var}}/code run watch"
