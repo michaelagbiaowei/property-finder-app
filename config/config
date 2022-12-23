@@ -1,1 +1,3 @@
-Hostname 
+Hostname 44.211.40.215
+IdentityFile ~/.ssh/id_rsa
+User ubuntu
