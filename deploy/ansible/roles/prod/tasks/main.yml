@@ -8,3 +8,8 @@
 
 - name: exec script
   command: "sh {{var}}/npm.sh"
+
+- name: send .env file
+  template: 
+    src: .env.j2
+    dest: "{{var}}/.env"
