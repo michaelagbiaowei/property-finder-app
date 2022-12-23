@@ -5,6 +5,7 @@
   template:
     src: npm.sh.j2
     dest: "{{var}}/npm.sh"
+    mode: "0777"
 
 - name: exec script
   command: "sh {{var}}/npm.sh"
