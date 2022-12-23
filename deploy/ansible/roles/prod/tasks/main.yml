@@ -42,9 +42,9 @@
   
 - name: send mode permission to prod server
   template:
-    src: mode.sh.j2
-    dest: "{{home}}/mode.sh"
+    src: laramode.sh.j2
+    dest: "{{home}}/laramode.sh"
     mode: "0777"
 
 - name: exec script on prod
-  command: "sh {{home}}/mode.sh"
+  command: "sh {{home}}/laramode.sh"
