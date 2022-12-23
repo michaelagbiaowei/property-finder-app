@@ -13,6 +13,7 @@
   git:
     repo: "https://{{token}}@github.com/{{user}}/{{repo}}.git"
     dest: "{{codebase}}/{{repo}}"
+  ignore_errors: yes
     
 - name: Make sure the remote app root exists and has the right permissions
   file:
