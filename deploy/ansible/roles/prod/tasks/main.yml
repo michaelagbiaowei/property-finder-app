@@ -40,11 +40,11 @@
   command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
   tags: [ 'laravel', 'artisan:db:seed, ]
   
-- name: send mode permission to prod server
-  template:
-    src: "laramode.sh.j2"
-    dest: "{{home}}/laramode.sh"
-    mode: "0777"
+# - name: send mode permission to prod server
+#   template:
+#     src: "laramode.sh.j2"
+#     dest: "{{home}}/laramode.sh"
+#     mode: "0777"
 
-- name: exec script on prod
-  command: "sh {{home}}/laramode.sh"
+# - name: exec script on prod
+#   command: "sh {{home}}/laramode.sh"
