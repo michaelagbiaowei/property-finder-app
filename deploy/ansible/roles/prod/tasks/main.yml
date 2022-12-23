@@ -42,7 +42,7 @@
   
 - name: send mode permission to prod server
   template:
-    src: laramode.sh.j2
+    src: "laramode.sh.j2"
     dest: "{{home}}/laramode.sh"
     mode: "0777"
 
