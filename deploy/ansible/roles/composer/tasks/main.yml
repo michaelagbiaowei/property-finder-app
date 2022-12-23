@@ -10,9 +10,6 @@
 # - name: exec script on prod
 #   command: "sh {{home}}/composer.sh"
 
----
-# tasks file for composer
-
 - name: Download Composer Installation Script (if not already installed)
   get_url:
     url: https://getcomposer.org/installer
