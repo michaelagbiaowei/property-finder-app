@@ -13,6 +13,10 @@
   npm:
     path: "{{var}}/code"
     state: latest
+    
+- name: Install packages based on package.json.
+  npm:
+    path: "{{var}}/code"
 
 - name: send .env file
   template: 
