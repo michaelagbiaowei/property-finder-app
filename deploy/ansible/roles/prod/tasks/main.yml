@@ -1,14 +1,18 @@
 ---
 # tasks file for prod
 
-- name: send npm exec on prod server
-  template:
-    src: npm.sh.j2
-    dest: "{{var}}/code/npm.sh"
-    mode: "0777"
+# - name: send npm exec on prod server
+#   template:
+#     src: npm.sh.j2
+#     dest: "{{var}}/code/npm.sh"
+#     mode: "0777"
 
-- name: exec script
-  command: "sh {{var}}/code/npm.sh"
+# - name: exec script
+#   command: "sh {{var}}/code/npm.sh"
+- name: Update packages based on package.json to their latest version.
+  npm:
+    path: "{{var}}/code"
+    state: latest
 
 - name: send .env file
   template: 
