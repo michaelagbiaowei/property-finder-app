@@ -1,10 +1,10 @@
 ---
 # tasks file for prod
 
-- name: Update packages based on package.json to their latest version.
-  npm:
-    path: "{{var}}/code"
-    state: latest
+# - name: Update packages based on package.json to their latest version.
+#   npm:
+#     path: "{{var}}/code"
+#     state: latest
     
 - name: Install packages based on package.json.
   npm:
