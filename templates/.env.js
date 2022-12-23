@@ -2,7 +2,7 @@ APP_NAME="Property Finder Application"
 APP_ENV=production
 APP_KEY=
 APP_DEBUG=true
-APP_URL=http://3.235.194.96
+APP_URL=http://44.211.40.215
 APP_PORT=3000
 
 LOG_CHANNEL=stack
