@@ -34,13 +34,31 @@
 #     executable: /bin/bash
 #     chdir: "{{var}}/code"
 
-- name: npm run watch
-  command: "/usr/bin/npm run watch"
-  args:
-    chdir: "{{var}}/code"
-    
 # - name: npm run watch
-#   command: "/usr/bin/npm {{var}}/code/run watch"
-# #   tags: [ 'laravel', 'artisan:migrate' ]
+#   command: "/usr/bin/npm run watch"
+#   args:
+#     chdir: "{{var}}/code"
+    
+- name: npm run watch
+  command: "/usr/bin/npm {{var}}/code/run watch"
+#   tags: [ 'laravel', 'artisan:migrate' ]
+
+# - name: Installing Laravel dependencies
+#   command: composer install --no-interaction --working-dir="{{var}}/code"
+#   become: false
+
+# - name: Generate app key
+#   command: "/usr/bin/php {{var}}/code/artisan key:generate"
+#   tags: [ 'laravel', 'artisan:key' ]
+
+# - name: Set up app storage link
+#   command: "/usr/bin/php {{var}}/code/artisan storage:link"
+#   tags: [ 'laravel', 'artisan:storage' ]
+
+# - name: Run Migrations + Seeders
+#   command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan migrate --seed --force"
+#   tags: [ 'laravel', 'artisan:migrate' 
+  
+  
   
   
