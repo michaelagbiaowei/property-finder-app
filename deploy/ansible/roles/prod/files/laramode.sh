@@ -13,10 +13,4 @@ sudo chmod -R 775  ${path}/bootstrap/cache
 
 sudo a2enmod rewrite
 
-sudo a2dissite 000-default.conf
-
-sudo rm /etc/apache2/sites-available/000-default.conf
-
-sudo a2ensite node.js.conf
-
-sudo systemctl restart apache2
+# sudo systemctl restart apache2
