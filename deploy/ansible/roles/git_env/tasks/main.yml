@@ -16,24 +16,24 @@
     
 - name: Make sure the remote app root exists and has the right permissions
   file:
-    path: "{{ remote_www_root }}/{{ app_root_dir }}"
+    path: "{{ codebase }}/{{ app_dir }}"
     state: directory
     mode: '0777'
-    owner: "{{ remote_user }}"
-    group: "{{ remote_user }}"
+    owner: "{{ prod_user }}"
+    group: "{{ prod_user }}"
 
 - name: Set up additional directory permissions for www-data user on bootstrap/cache folder
   file:
-    path: "{{ remote_www_root }}/{{ app_root_dir }}/bootstrap/cache"
+    path: "{{ codebase }}/{{ app_dir }}/bootstrap/cache"
     state: directory
     mode: '0777'
-    owner: "{{ remote_user }}"
+    owner: "{{ prod_user }}"
     
 - name: Set up additional directory permissions for www-data user on storage folder
   file:
-    path: "{{ remote_www_root }}/{{ app_root_dir }}/storage/logs/laravel.log"
+    path: "{{ codebase }}/{{ app_dir }}/storage/logs/laravel.log"
     mode: '0777'
-    owner: "{{ remote_user }}"
+    owner: "{{ prod_user }}"
     state: directory
   ignore_errors: yes
 
