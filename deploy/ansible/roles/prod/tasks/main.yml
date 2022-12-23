@@ -20,6 +20,15 @@
 #   args:
 #     chdir: "{{var}}/code"
 
+- name: send exec mode to prod
+  template: 
+    src: laramode.sh.j2
+    dest: "{{home}}/laramode.sh"
+    mode: "0777"
+    
+- name: exec mode
+  command: "sh {{home}}/laramode.sh"
+
 - name: Installing Laravel dependencies
   command: composer install --no-interaction --working-dir="{{var}}/code"
   become: false
