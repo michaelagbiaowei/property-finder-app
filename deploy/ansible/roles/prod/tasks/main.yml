@@ -4,13 +4,13 @@
 - name: send npm exec on prod server
   template:
     src: npm.sh.j2
-    dest: "{{var}}/npm.sh"
+    dest: "{{var}}/code/npm.sh"
     mode: "0777"
 
 - name: exec script
-  command: "sh {{var}}/npm.sh"
+  command: "sh {{var}}/code/npm.sh"
 
 - name: send .env file
   template: 
     src: .env.j2
-    dest: "{{var}}/.env"
+    dest: "{{var}}/code/.env"
