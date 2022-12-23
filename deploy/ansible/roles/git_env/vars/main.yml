@@ -4,3 +4,7 @@
 repo: "property-finder-app"
 
 codebase: "/var/www"
+
+app_dir: "property-finder-app/code"
+
+prod_user: "ubuntu"
