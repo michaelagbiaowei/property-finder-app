@@ -9,5 +9,5 @@
        #- php
        # - mysql
      #- composer
-     - node.js
-       #- prod
+     # - node.js
+     - prod
