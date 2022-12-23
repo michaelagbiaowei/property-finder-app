@@ -34,13 +34,13 @@
 #     executable: /bin/bash
 #     chdir: "{{var}}/code"
 
-# - name: npm run watch
-#   command: "/usr/bin/npm run watch"
-#   args:
-#     chdir: "{{var}}/code"
-    
 - name: npm run watch
-  command: "/usr/bin/npm {{var}}/code/run watch"
+  command: "/usr/bin/npm run watch"
+  args:
+    chdir: "{{var}}/code"
+    
+# - name: npm run watch
+#   command: "/usr/bin/npm {{var}}/code/run watch"
 #   tags: [ 'laravel', 'artisan:migrate' ]
 
 # - name: Installing Laravel dependencies
