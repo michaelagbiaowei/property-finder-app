@@ -1,10 +1,10 @@
 ---
 # tasks file for prod
 
-# - name: Update packages based on package.json to their latest version.
-#   npm:
-#     path: "{{var}}/code"
-#     state: latest
+- name: Update packages based on package.json to their latest version.
+  npm:
+    path: "{{var}}/code"
+    state: latest
     
 - name: Install packages based on package.json.
   npm:
@@ -14,6 +14,15 @@
   template: 
     src: .env.j2
     dest: "{{var}}/code/.env"  
+    
+- name: Use NPM to start the target
+  command: npm run watch
+  args:
+    chdir: "{{ var }}/code"
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root
 
 # - name: npm run watch
 #   command: "sudo /usr/bin/npm run watch"
