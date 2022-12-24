@@ -6,7 +6,7 @@
    roles:
      # - git_env
      #- apache2
-     #- php
+     - php
      #- mysql
      #- composer
      #- node.js
