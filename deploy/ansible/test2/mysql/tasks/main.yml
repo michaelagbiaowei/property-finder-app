@@ -9,7 +9,7 @@
 - name: Sets the password
   mysql_user:
     name: ansible
-    password: "{{ mysql_root_password }}"
+    password: "{{ mysql_prod_root_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true
 
@@ -29,15 +29,15 @@
 
 - name: Creates App Database
   mysql_db:
-    name: "{{ mysql_app_db }}"
+    name: "{{ mysql_prod_app_db }}"
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Create App MySQL user and grants access to App DB
   mysql_user:
-    name: "{{ mysql_app_user }}"
-    password: "{{ mysql_app_pass }}"
-    priv: "{{ mysql_app_db }}.*:ALL"
+    name: "{{ mysql_prod_app_user }}"
+    password: "{{ mysql_prod_app_pass }}"
+    priv: "{{ mysql_prod_app_db }}.*:ALL"
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true

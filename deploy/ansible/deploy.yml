@@ -6,8 +6,8 @@
    roles:
      #- setup
      #- apache2
-     - php
-     - mysql
-     - composer
-     - node.js
+     #- php
+     #- mysql
+     #- composer
+     #- node.js
      - deploy

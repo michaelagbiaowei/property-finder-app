@@ -3,4 +3,4 @@
 
 apache2_version: 2.2.58
 
-path_vhost: /etc/apache2/sites-available/laravel.conf
+vhost_path: /etc/apache2/sites-available/node.conf

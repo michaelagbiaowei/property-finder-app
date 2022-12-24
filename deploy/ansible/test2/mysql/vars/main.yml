@@ -1,0 +1,7 @@
+---
+# vars file for mysql
+
+mysql_prod_app_db: mysqldb
+mysql_prod_app_user: mysqluser
+mysql_prod_app_pass: 12345
+mysql_prod_root_password: abcde
