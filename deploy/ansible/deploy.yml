@@ -4,8 +4,8 @@
    vars_files:
      - vault/main.yml
    roles:
-     - setup
-     - apache2
+     #- setup
+     #- apache2
      - php
      - mysql
      - composer
