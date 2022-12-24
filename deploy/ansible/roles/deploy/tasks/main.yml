@@ -5,9 +5,40 @@
   template:
     src: .env.j2
     dest: "{{ remote_www_root }}/{{ app_root_dir }}/.env"
+    
+- name: Use NPM to update the target
+  command: npm update
+  args:
+    chdir: "{{ remote_www_root }}/{{ app_root_dir }}"
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root
+    
+# - name: Install packages based on package.json.
+#   npm:
+#     path: "{{ remote_www_root }}/{{ app_root_dir }}"
+
+- name: Use NPM to install the target
+  command: npm install
+  args:
+    chdir: "{{ remote_www_root }}/{{ app_root_dir }}"
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root  
+    
+- name: Use NPM to compile the target
+  command: npm run watch
+  args:
+    chdir: "{{ remote_www_root }}/{{ app_root_dir }}"
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root
 
 - name: Installing Laravel dependencies
-  command: composer install --no-interaction --working-dir=/var/www/laravel-realworld-example-app
+  command: composer install --no-interaction --working-dir=/var/www/property-finder-app/code
   become: false
 
 - name: Generate app key
