@@ -7,17 +7,16 @@
 # Apache2 Configuration
 - name: copy vhost to salve
   template:
-    src: "laravel.conf.j2"
-    dest: "{{path_vhost}}"
+    src: "node.conf.j2"
+    dest: "{{vhost_path}}"
 
 - name: Enables new site
   file:
-    src: "/etc/apache2/sites-available/laravel.conf"
-    dest: "/etc/apache2/sites-enabled/laravel.conf"
+    src: "/etc/apache2/sites-available/node.conf"
+    dest: "/etc/apache2/sites-enabled/node.conf"
     state: link
 
 - name: Removes "default" site
   file:
     path: "/etc/apache2/sites-enabled/000-default.conf"
     state: absent
-
