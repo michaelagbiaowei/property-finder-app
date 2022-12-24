@@ -1,5 +1,6 @@
 ---
 tasks file for php
+
 - name: Add the packages in sources lists
   command: apt install apt-transport-https lsb-release software-properties-common ca-certificates -y
    
