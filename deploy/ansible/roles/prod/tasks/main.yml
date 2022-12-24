@@ -74,7 +74,7 @@
   tags: [ 'laravel', 'artisan:storage' ]
 
 - name: Run Migrations + Seeders
-  command: "/usr/bin/php {{var}}/code/artisan migrate --seed --force"
+  command: "/usr/bin/php {{var}}/code/artisan migrate_in_order --seed --force"
   tags: [ 'laravel', 'artisan:migrate' ]
   
 - name: Create dummy data for your database
