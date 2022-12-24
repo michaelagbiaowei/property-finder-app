@@ -1,12 +1,10 @@
 ---
-# vars file for setup
+# vars file for git_env
 
-git_version: 2.30.2
+repo: "property-finder-app"
 
-git_repo_url: https://github.com/michaelagbiaowei/laravel-realworld-example-app.git
+codebase: "/var/www"
 
-app_root_dir: laravel-realworld-example-app
+app_dir: "property-finder-app/code"
 
-remote_www_root: /var/www
-
-remote_user: ubuntu
+prod_user: "ubuntu"
