@@ -2,4 +2,4 @@
 # vars file for deploy
 
 remote_www_root: /var/www
-app_root_dir: laravel-realworld-example-app
+app_root_dir: property-finder-app/code
