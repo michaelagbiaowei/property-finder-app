@@ -7,11 +7,11 @@
 - name: Add the packages in sources lists  
   command: sudo add-apt-repository ppa:ondrej/php -y
  
-# - name: Update the apt cache
-#   apt: update_cache=yes cache_valid_time=3600
+- name: Update the apt cache
+  apt: update_cache=yes cache_valid_time=3600
 
 - name: install php8.0
-  apt: name="{{php_apt}}" state=latest
+  apt: name="{{php_apt}}" state=present
 
 - name: php verson
   command: php -v
