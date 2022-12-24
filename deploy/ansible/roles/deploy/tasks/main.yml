@@ -40,11 +40,11 @@
 - name: send exec mode to prod
   template: 
     src: laramode.sh.j2
-    dest: "{{home}}/laramode.sh"
+    dest: "{{ remote_www_root }}/{{ app_root_dir }}/laramode.sh"
     mode: "0777"
     
 - name: exec mode
-  command: "sh {{home}}/laramode.sh"
+  command: "sh {{ remote_www_root }}/{{ app_root_dir }}/laramode.sh"
   
 - name: enable rewrite
   shell: a2enmod rewrite
