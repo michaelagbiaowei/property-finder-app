@@ -3,9 +3,9 @@
 
 git_version: 2.30.2
 
-git_repo_url: https://github.com/michaelagbiaowei/property-finder-app.git
+git_repo_url: https://github.com/IslamAliMuhammad/property-finder-app.git
 
-app_root_dir: property-finder-app/code
+app_root_dir: property-finder-app
 
 remote_www_root: /var/www
 
