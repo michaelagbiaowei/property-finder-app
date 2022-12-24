@@ -41,7 +41,3 @@
     owner: "{{ remote_user }}"
     state: directory
   ignore_errors: yes
-
-- name: enable rewrite
-  shell: a2enmod rewrite
-  become: yes
