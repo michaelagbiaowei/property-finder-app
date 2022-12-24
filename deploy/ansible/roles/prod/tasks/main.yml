@@ -1,14 +1,33 @@
 ---
 # tasks file for prod
 
-- name: Update packages based on package.json to their latest version.
-  npm:
-    path: "{{var}}/code"
-    state: latest
+# - name: Update packages based on package.json to their latest version.
+#   npm:
+#     path: "{{var}}/code"
+#     state: latest
+
+- name: Use NPM to start the target
+  command: npm update
+  args:
+    chdir: "{{ var }}/code"
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root
     
-- name: Install packages based on package.json.
-  npm:
-    path: "{{var}}/code"
+# - name: Install packages based on package.json.
+#   npm:
+#     path: "{{var}}/code"
+
+- name: Use NPM to start the target
+  command: npm install
+  args:
+    chdir: "{{ var }}/code"
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root
+    
 
 - name: send .env file
   template: 
