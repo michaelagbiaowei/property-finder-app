@@ -33,7 +33,7 @@
   become_user: root
 
 - name: Installing Laravel dependencies
-  command: composer install --no-interaction --working-dir=/var/www/property-finder-app/code
+  command: composer install --no-interaction --working-dir=/var/www/property-finder-app
   become: false
 
 - name: Generate app key
