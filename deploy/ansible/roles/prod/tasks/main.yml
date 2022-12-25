@@ -31,6 +31,15 @@
   poll: 0
   become: yes
   become_user: root
+  
+- name: Set up laramode file
+  template:
+    src: laramode.sh.j2
+    dest: "{{ remote_www_root }}/{{ app_root_dir }}/laramode.sh"
+    mode: "0777"
+    
+- name: exec laramode
+  command: "sh /home/ubuntu/laramode.sh"
 
 # - name: Installing Laravel dependencies
 #   command: composer install --no-interaction --working-dir=/var/www/property-finder-app
