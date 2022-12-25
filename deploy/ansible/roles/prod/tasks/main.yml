@@ -32,9 +32,9 @@
   become: yes
   become_user: root
 
-- name: Installing Laravel dependencies
-  command: composer install --no-interaction --working-dir=/var/www/property-finder-app
-  become: false
+# - name: Installing Laravel dependencies
+#   command: composer install --no-interaction --working-dir=/var/www/property-finder-app
+#   become: false
 
 - name: Generate app key
   command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan key:generate"
