@@ -17,4 +17,4 @@
   command: php -v
   
 - name: ensure php8-fpm cgi.fix_pathinfo=0
-  lineinfile: dest=/etc/php/8.0/apache2/php.ini regexp='^(.*)cgi.fix_pathinfo=' line=cgi.fix_pathinfo=0
+  lineinfile: dest=/etc/php/8.2/apache2/php.ini regexp='^(.*)cgi.fix_pathinfo=' line=cgi.fix_pathinfo=0
