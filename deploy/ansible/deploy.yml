@@ -5,9 +5,9 @@
      #- vault/main.yml
    roles:
      - git.env
-     - apache2
-     - php
-     - mysql
-     - composer
-     - node.js
-     - prod
+#      - apache2
+#      - php
+#      - mysql
+#      - composer
+#      - node.js
+#      - prod
