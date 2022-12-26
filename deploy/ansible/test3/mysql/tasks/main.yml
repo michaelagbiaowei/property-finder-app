@@ -1,6 +1,5 @@
 ---
 # tasks file for mysql
-
 - name: Install mysql
   apt: name={{ item }} update_cache=yes state=latest
   loop: [ 'mysql-server', 'python3-pymysql' ]
@@ -9,11 +8,11 @@
 
 - name: Sets the password
   mysql_user:
-    name: ubuntu
-    password: "{{ root_pass }}"
+    name: ansible
+    password: "{{ mysql_root_password }}"
     login_unix_socket: /var/run/mysqld/mysqld.sock
-  no_log: false
-  ignore_errors: yes
+  no_log: true
+
 - name: Removes all anonymous user accounts
   mysql_user:
     name: ''
@@ -30,15 +29,15 @@
 
 - name: Creates App Database
   mysql_db:
-    name: "{{ app_db }}"
+    name: "{{ mysql_app_db }}"
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
 
 - name: Create App MySQL user and grants access to App DB
   mysql_user:
-    name: "{{ app_user }}"
-    password: "{{ app_pass }}"
-    priv: "{{ app_db }}.*:ALL"
+    name: "{{ mysql_app_user }}"
+    password: "{{ mysql_app_pass }}"
+    priv: "{{ mysql_app_db }}.*:ALL"
     state: present
     login_unix_socket: /var/run/mysqld/mysqld.sock
   no_log: true

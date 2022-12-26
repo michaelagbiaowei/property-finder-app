@@ -1,4 +1,0 @@
----
-# vars file for apache2
-
-vhost: /etc/apache2/sites-available/node.js.conf 

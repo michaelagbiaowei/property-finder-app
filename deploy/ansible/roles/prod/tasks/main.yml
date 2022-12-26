@@ -1,58 +1,84 @@
 ---
-# tasks file for deploy
-- name: Set up .env file
-  template:
-    src: .env.j2
-    dest: "{{ remote_www_root }}/{{ app_root_dir }}/.env"
-    
-- name: Use NPM to update the target
+# tasks file for prod
+
+# - name: Update packages based on package.json to their latest version.
+#   npm:
+#     path: "{{var}}/code"
+#     state: latest
+
+- name: Use NPM to start the target
   command: npm update
   args:
-    chdir: "{{ remote_www_root }}/{{ app_root_dir }}"
+    chdir: "{{ var }}/code"
   async: 42
   poll: 0
   become: yes
   become_user: root
+    
+# - name: Install packages based on package.json.
+#   npm:
+#     path: "{{var}}/code"
 
-- name: Use NPM to install the target
+- name: Use NPM to start the target
   command: npm install
   args:
-    chdir: "{{ remote_www_root }}/{{ app_root_dir }}"
-  async: 42
-  poll: 0
-  become: yes
-  become_user: root  
-    
-- name: Use NPM to compile the target
-  command: npm run watch
-  args:
-    chdir: "{{ remote_www_root }}/{{ app_root_dir }}"
+    chdir: "{{ var }}/code"
   async: 42
   poll: 0
   become: yes
   become_user: root
-  
-- name: Set up laramode file
-  template:
+    
+
+- name: send .env file
+  template: 
+    src: .env.j2
+    dest: "{{var}}/code/.env"  
+    
+- name: Use NPM to start the target
+  command: npm run watch
+  args:
+    chdir: "{{ var }}/code"
+  async: 42
+  poll: 0
+  become: yes
+  become_user: root
+
+# - name: npm run watch
+#   command: "sudo /usr/bin/npm run watch"
+#   args:
+#     chdir: "{{var}}/code"
+
+- name: send exec mode to prod
+  template: 
     src: laramode.sh.j2
-    dest: "{{ remote_www_root }}/{{ app_root_dir }}/laramode.sh"
+    dest: "{{home}}/laramode.sh"
     mode: "0777"
     
-- name: exec laramode
-  command: "sh /home/ubuntu/laramode.sh"
+- name: exec mode
+  command: "sh {{home}}/laramode.sh"
+  
+- name: enable rewrite
+  shell: a2enmod rewrite
+  become: yes
 
-# - name: Installing Laravel dependencies
-#   command: composer install --no-interaction --working-dir=/var/www/property-finder-app
-#   become: false
+- name: Installing Laravel dependencies
+  command: composer install --no-interaction --working-dir="{{var}}/code"
+  become: false
 
 - name: Generate app key
-  command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan key:generate"
+  command: "/usr/bin/php {{var}}/code/artisan key:generate"
   tags: [ 'laravel', 'artisan:key' ]
 
 - name: Set up app storage link
-  command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan storage:link"
+  command: "/usr/bin/php {{var}}/code/artisan storage:link"
   tags: [ 'laravel', 'artisan:storage' ]
 
 - name: Run Migrations + Seeders
-  command: "/usr/bin/php {{ remote_www_root }}/{{ app_root_dir }}/artisan migrate --seed --force"
+  command: "/usr/bin/php {{var}}/code/artisan migrate_in_order --seed --force"
   tags: [ 'laravel', 'artisan:migrate' ]
+  
+- name: Create dummy data for your database
+  command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
+  tags: [ 'laravel', 'artisan:db:seed' ]
+ 
+

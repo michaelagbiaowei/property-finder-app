@@ -1,6 +1,4 @@
 ---
 # vars file for apache2
 
-apache2_version: 2.2.58
-
-path_vhost: /etc/apache2/sites-available/laravel.conf
+vhost: /etc/apache2/sites-available/node.js.conf 
