@@ -1,8 +1,8 @@
  - name: deploying property-finder-app to production server
    hosts: nodeslave
    become: true
-     #  vars_files:
-     #- vault/main.yml
+   vars_files:
+     - vault/main.yml
    roles:
      - git.env
 #      - apache2
