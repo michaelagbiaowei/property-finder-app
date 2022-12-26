@@ -1,12 +1,7 @@
 ---
 # tasks file for prod
 
-# - name: Update packages based on package.json to their latest version.
-#   npm:
-#     path: "{{var}}/code"
-#     state: latest
-
-- name: Use NPM to start the target
+- name: Use NPM to update the target
   command: npm update
   args:
     chdir: "{{ var }}/code"
@@ -14,12 +9,8 @@
   poll: 0
   become: yes
   become_user: root
-    
-# - name: Install packages based on package.json.
-#   npm:
-#     path: "{{var}}/code"
 
-- name: Use NPM to start the target
+- name: Use NPM to install the target
   command: npm install
   args:
     chdir: "{{ var }}/code"
@@ -28,13 +19,7 @@
   become: yes
   become_user: root
     
-
-- name: send .env file
-  template: 
-    src: .env.j2
-    dest: "{{var}}/code/.env"  
-    
-- name: Use NPM to start the target
+- name: Use NPM to build and compile the target
   command: npm run watch
   args:
     chdir: "{{ var }}/code"
@@ -42,11 +27,11 @@
   poll: 0
   become: yes
   become_user: root
-
-# - name: npm run watch
-#   command: "sudo /usr/bin/npm run watch"
-#   args:
-#     chdir: "{{var}}/code"
+  
+- name: send .env file
+  template: 
+    src: .env.j2
+    dest: "{{var}}/code/.env"  
 
 - name: send exec mode to prod
   template: 
@@ -60,6 +45,10 @@
 - name: enable rewrite
   shell: a2enmod rewrite
   become: yes
+  
+- name: Updating Laravel dependencies
+  command: composer update --no-interaction --working-dir="{{var}}/code"
+  become: false
 
 - name: Installing Laravel dependencies
   command: composer install --no-interaction --working-dir="{{var}}/code"
@@ -80,5 +69,3 @@
 - name: Create dummy data for your database
   command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
   tags: [ 'laravel', 'artisan:db:seed' ]
- 
-
