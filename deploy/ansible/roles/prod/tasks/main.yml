@@ -46,9 +46,9 @@
   shell: a2enmod rewrite
   become: yes
   
-- name: Updating Laravel dependencies
-  command: composer update --no-interaction --working-dir="{{var}}/code"
-  become: false
+# - name: Updating Laravel dependencies
+#   command: composer update --no-interaction --working-dir="{{var}}/code"
+#   become: false
 
 # - name: Installing Laravel dependencies
 #   command: composer install --no-interaction --working-dir="{{var}}/code"
