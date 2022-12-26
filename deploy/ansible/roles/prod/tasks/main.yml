@@ -33,14 +33,14 @@
     src: .env.j2
     dest: "{{var}}/code/.env"  
 
-- name: send exec mode to prod
-  template: 
-    src: laramode.sh.j2
-    dest: "{{home}}/laramode.sh"
-    mode: "0777"
+# - name: send exec mode to prod
+#   template: 
+#     src: laramode.sh.j2
+#     dest: "{{home}}/laramode.sh"
+#     mode: "0777"
     
-- name: exec mode
-  command: "sh {{home}}/laramode.sh"
+# - name: exec mode
+#   command: "sh {{home}}/laramode.sh"
   
 - name: enable rewrite
   shell: a2enmod rewrite
@@ -50,22 +50,22 @@
   command: composer update --no-interaction --working-dir="{{var}}/code"
   become: false
 
-- name: Installing Laravel dependencies
-  command: composer install --no-interaction --working-dir="{{var}}/code"
-  become: false
+# - name: Installing Laravel dependencies
+#   command: composer install --no-interaction --working-dir="{{var}}/code"
+#   become: false
 
-- name: Generate app key
-  command: "/usr/bin/php {{var}}/code/artisan key:generate"
-  tags: [ 'laravel', 'artisan:key' ]
+# - name: Generate app key
+#   command: "/usr/bin/php {{var}}/code/artisan key:generate"
+#   tags: [ 'laravel', 'artisan:key' ]
 
-- name: Set up app storage link
-  command: "/usr/bin/php {{var}}/code/artisan storage:link"
-  tags: [ 'laravel', 'artisan:storage' ]
+# - name: Set up app storage link
+#   command: "/usr/bin/php {{var}}/code/artisan storage:link"
+#   tags: [ 'laravel', 'artisan:storage' ]
 
-- name: Run Migrations + Seeders
-  command: "/usr/bin/php {{var}}/code/artisan migrate_in_order --seed --force"
-  tags: [ 'laravel', 'artisan:migrate' ]
+# - name: Run Migrations + Seeders
+#   command: "/usr/bin/php {{var}}/code/artisan migrate_in_order --seed --force"
+#   tags: [ 'laravel', 'artisan:migrate' ]
   
-- name: Create dummy data for your database
-  command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
-  tags: [ 'laravel', 'artisan:db:seed' ]
+# - name: Create dummy data for your database
+#   command: "/usr/bin/php {{var}}/code/artisan db:seed --class TestSeeder"
+#   tags: [ 'laravel', 'artisan:db:seed' ]
