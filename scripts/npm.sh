@@ -1,9 +1,17 @@
-sudo apt install npm -y
+# INSTALL DEPENDENCIES BASED ON PACKAGE.JSON FILE
 
-npm install
+#!/usr/bin/bash
+
+# Update dependencies
 
 npm update
 
+# Install packages
+
+npm install
+
 npm audit fix --force
+
+# Build code with npm watch
 
 npm run watch
