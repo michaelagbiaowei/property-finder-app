@@ -40,14 +40,19 @@
 #     mode: "0777"
     
 # - name: exec mode
+
 #   command: "sh {{home}}/laramode.sh"
   
 - name: enable rewrite
+
   shell: a2enmod rewrite
   become: yes
   
 - name: Restart apache2
   command: systemctl restart apache2
+  
+- name: subdirectory permissions
+  command: chmod -R 777 "{{ var }}/code"
   
 # - name: Updating Laravel dependencies
 #   command: composer update --no-interaction --working-dir="{{var}}/code"
