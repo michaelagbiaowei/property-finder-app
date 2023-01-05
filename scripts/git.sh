@@ -2,9 +2,9 @@
 
 # Installation of git cli on Amazon Linux 2
 
-sudo yum update
+sudo apt update
 
-sudo yum install git -y
+sudo apt install git -y
 
 # Cloning codebase (git repository)
 
