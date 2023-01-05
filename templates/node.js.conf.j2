@@ -1,0 +1,30 @@
+<VirtualHost *:80>
+
+    ServerAdmin bennie@gmail.com
+
+    ServerName 100.26.191.0
+
+    ServerAlias www.100.26.191.0
+
+    DocumentRoot /var/www/property-finder-app/code/public
+
+    <Directory /var/www/property-finder-app/code>
+
+    Options Indexes FollowSymLinks MultiViews
+
+    AllowOverride All
+
+    Order allow,deny
+
+    allow from all
+
+    Require all granted
+
+    </Directory>
+
+    LogLevel debug
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
