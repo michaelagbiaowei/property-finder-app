@@ -54,9 +54,9 @@
 - name: subdirectory permissions
   command: chmod -R 777 "{{ var }}/code"
   
-# - name: Updating Laravel dependencies
-#   command: composer update --no-interaction --working-dir="{{var}}/code"
-#   become: false
+- name: Updating Laravel dependencies
+  command: composer update --no-interaction --working-dir="{{var}}/code"
+  become: false
 
 # - name: Installing Laravel dependencies
 #   command: composer install --no-interaction --working-dir="{{var}}/code"
