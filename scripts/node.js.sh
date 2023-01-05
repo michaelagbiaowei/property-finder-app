@@ -4,19 +4,19 @@
 
 # Install node version manager (nvm)
 
-#curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
 
 # Activate nvm
 
-#. ~/.nvm/nvm.sh
+. ~/.nvm/nvm.sh
 
 # Install the latest version of Node.js
 
-#nvm install --lts
+nvm install --lts
 
 # Test that Node.js is installed and running
 
-#node -e "console.log('Running Node.js ' + process.version)"
+node -e "console.log('Running Node.js ' + process.version)"
 
 sudo apt update
 
