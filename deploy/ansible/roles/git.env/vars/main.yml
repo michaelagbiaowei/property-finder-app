@@ -3,7 +3,7 @@
 
 repo: "property-finder-app"
 
-codebase: "/var/www"
+codebase: "/var/www/"
 
 app_dir: "property-finder-app/code"
 
