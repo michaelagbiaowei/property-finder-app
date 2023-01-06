@@ -1,58 +1,58 @@
 ---
 # tasks file for prod
 
-- name: Use NPM to update the target
-  command: npm update
-  args:
-    chdir: "{{ var }}/code"
-  async: 42
-  poll: 0
-  become: yes
-  become_user: root
+# - name: Use NPM to update the target
+#   command: npm update
+#   args:
+#     chdir: "{{ var }}/code"
+#   async: 42
+#   poll: 0
+#   become: yes
+#   become_user: root
 
-- name: Use NPM to install the target
-  command: npm install
-  args:
-    chdir: "{{ var }}/code"
-  async: 42
-  poll: 0
-  become: yes
-  become_user: root
+# - name: Use NPM to install the target
+#   command: npm install
+#   args:
+#     chdir: "{{ var }}/code"
+#   async: 42
+#   poll: 0
+#   become: yes
+#   become_user: root
     
-- name: Use NPM to build and compile the target
-  command: npm run watch
-  args:
-    chdir: "{{ var }}/code"
-  async: 42
-  poll: 0
-  become: yes
-  become_user: root
+# - name: Use NPM to build and compile the target
+#   command: npm run watch
+#   args:
+#     chdir: "{{ var }}/code"
+#   async: 42
+#   poll: 0
+#   become: yes
+#   become_user: root
   
-- name: send .env file
-  template: 
-    src: .env.j2
-    dest: "{{var}}/code/.env"   
-
-# - name: send exec mode to prod
+# - name: send .env file
 #   template: 
-#     src: laramode.sh.j2
-#     dest: "{{home}}/laramode.sh"
-#     mode: "0777"
+#     src: .env.j2
+#     dest: "{{var}}/code/.env"   
+
+# # - name: send exec mode to prod
+# #   template: 
+# #     src: laramode.sh.j2
+# #     dest: "{{home}}/laramode.sh"
+# #     mode: "0777"
     
-# - name: exec mode
+# # - name: exec mode
 
-#   command: "sh {{home}}/laramode.sh"
+# #   command: "sh {{home}}/laramode.sh"
   
-- name: enable rewrite
+# - name: enable rewrite
 
-  shell: a2enmod rewrite
-  become: yes
+#   shell: a2enmod rewrite
+#   become: yes
   
-- name: Restart apache2
-  command: systemctl restart apache2
+# - name: Restart apache2
+#   command: systemctl restart apache2
   
-- name: subdirectory permissions
-  command: chmod -R 777 "{{ var }}/code"
+# - name: subdirectory permissions
+#   command: chmod -R 777 "{{ var }}/code"
   
 - name: Updating Laravel dependencies
   command: composer update --no-interaction --working-dir="{{var}}/code"
