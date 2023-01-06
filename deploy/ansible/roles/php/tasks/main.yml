@@ -1,14 +1,14 @@
 ---
 # tasks file for php
 
-# - name: send php installation script to prod server
-#   template:
-#     src: php.sh.j2
-#     dest: "{{home}}/php.sh"
-#     mode: "0777"
+- name: send php installation script to prod server
+  template:
+    src: php.sh.j2
+    dest: "{{home}}/php.sh"
+    mode: "0777"
 
-# - name: exec php installation script
-#   command: "sh {{home}}/php.sh"
+- name: exec php installation script
+  command: "sh {{home}}/php.sh"
 
 
 - name: update php8.1 
