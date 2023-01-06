@@ -1,7 +1,7 @@
 ---
 # vars file for mysql
 
-app_db: root
-app_user: root
-app_pass: root
-root_pass: root
+app_db: mysqldb
+app_user: mysqluser
+app_pass: 12345
+root_pass: 54321
