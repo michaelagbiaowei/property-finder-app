@@ -1,15 +1,39 @@
 ---
 # tasks file for php
 
-- name: send php installation script to prod server
-  template:
-    src: php.sh.j2
-    dest: "{{home}}/php.sh"
-    mode: "0777"
+# - name: send php installation script to prod server
+#   template:
+#     src: php.sh.j2
+#     dest: "{{home}}/php.sh"
+#     mode: "0777"
 
-- name: exec php installation script
-  command: "sh {{home}}/php.sh"
+# - name: exec php installation script
+#   command: "sh {{home}}/php.sh"
 
 
+- name: update php8.1 
+ command: sudo apt-get update 
+ 
+- name: Install php8.1 ppa
+  command: sudo apt-get install software-properties-common -y
+  
+- name: add ppa
+  command: sudo add-apt-repository ppa:ondrej/php -y
+  
+- name: update server
+  command: apt-get update
+  
+- name: Install php8.1
+  command: sudo apt-get install php8.1 -y
+  
+- name: set default php8.1
+  command: sudo update-alternatives --set php /usr/bin/php8.1
+  
+- name: seal php8.1
+  command: a2enmod php8.1
+  
+- name: restart apache2
+  command: sudo systemctl restart apache2
+  
 - name: ensure php8-fpm cgi.fix_pathinfo=0
-  lineinfile: dest=/etc/php/8.2/apache2/php.ini regexp='^(.*)cgi.fix_pathinfo=' line=cgi.fix_pathinfo=0
+  lineinfile: dest=/etc/php/8.1/apache2/php.ini regexp='^(.*)cgi.fix_pathinfo=' line=cgi.fix_pathinfo=0
