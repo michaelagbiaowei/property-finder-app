@@ -1,5 +1,2 @@
-[deploy]
-nodemaster
-
 [prod]
-nodeslave
+slave
