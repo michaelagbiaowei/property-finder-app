@@ -62,9 +62,9 @@
   command: composer install --no-interaction --working-dir="{{var}}/code"
   become: false
 
-- name: Generate app key
-  command: "/usr/bin/php {{var}}/code/artisan key:generate"
-  tags: [ 'laravel', 'artisan:key' ]
+# - name: Generate app key
+#   command: "/usr/bin/php {{var}}/code/artisan key:generate"
+#   tags: [ 'laravel', 'artisan:key' ]
 
 - name: Set up app storage link
   command: "/usr/bin/php {{var}}/code/artisan storage:link"
