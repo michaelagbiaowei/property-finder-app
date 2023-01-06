@@ -12,7 +12,7 @@
 
 
 - name: update php8.1 
- command: sudo apt-get update 
+  command: sudo apt-get update 
  
 - name: Install php8.1 ppa
   command: sudo apt-get install software-properties-common -y
