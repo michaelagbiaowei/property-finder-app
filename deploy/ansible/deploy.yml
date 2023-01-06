@@ -4,10 +4,10 @@
    vars_files:
      - vault/main.yml
    roles:
-     - git.env
-     - apache2
+#      - git.env
+#      - apache2
      - php
-     - mysql
-     - composer
-     - node.js
+#      - mysql
+#      - composer
+#      - node.js
      - prod
