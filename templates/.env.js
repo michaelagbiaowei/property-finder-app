@@ -2,7 +2,7 @@ APP_NAME="Property Finder Application"
 APP_ENV=production
 APP_KEY=
 APP_DEBUG=true
-APP_URL=http://44.211.40.215
+APP_URL=http://54.159.55.210
 APP_PORT=3000
 
 LOG_CHANNEL=stack
@@ -12,9 +12,9 @@ LOG_LEVEL=debug
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=root
-DB_USERNAME=root
-DB_PASSWORD=root                                                                            
+DB_DATABASE=mysqldb
+DB_USERNAME=mysqluser
+DB_PASSWORD=12345                                                                       
 
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
